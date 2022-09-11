@@ -14,6 +14,11 @@ public class Main {
         List<String> local;
         List<String> StInGr = new ArrayList<String>();
         List<String> GrInSub = new ArrayList<String>();
+        List<Marks> marks = new ArrayList<>();
+        /*                   Test
+        marks.add(new Marks("Петя", "П-184", "Алгебра", 5));
+        marks.add(new Marks("Саша", "П-185", "Алгебра", 4));
+         */
         int number = 100;
 
         try {
@@ -36,6 +41,8 @@ public class Main {
                 System.out.println("12. Поиск группы по ФИО");
                 System.out.println("----------------------------Прочее--------------------------------");
                 System.out.println("13. Удаление группу и всех студентов в ней");
+                System.out.println("14. Добавить оценку");
+                System.out.println("15. Посмотреть все оценки");
                 System.out.println("0. Выход");
                 number = sc.nextInt();
 
@@ -46,12 +53,12 @@ public class Main {
                     case 4 -> {
                         local = addStudentInGr(groups, students);
                         if (local!=null)
-                            StInGr.add(local.toString());
+                            StInGr.add(local.toString()); // Исправить, при необходимости (см. ниже)
                     }
                     case 5 -> {
                         local = addGroupInSub(groups, subjects);
                         if (local!=null)
-                            GrInSub.add(local.toString());
+                            GrInSub.add(local.toString()); // Исправить, при необходимости (см. ниже)
                     }
                     case 6 -> {
                         System.out.println("\nПредметы:");
@@ -107,6 +114,30 @@ public class Main {
                         for (String ost : GrInSub)
                             System.out.println(ost);
                     }
+                    case 14 -> {
+                        Scanner scanner = new Scanner(System.in);
+                        System.out.println("Введите ФИО");
+                        String fio = scanner.nextLine();
+                        System.out.println("Введите группу");
+                        String gr = scanner.nextLine();
+                        System.out.println("Введите предмет");
+                        String sj = scanner.nextLine();
+                        System.out.println("Введите оценку");
+                        int mk = scanner.nextInt();
+
+//                        String localFio = Search.SearchFio(fio,StInGr);
+//                        String localGr = Search.SearchGroup(gr,StInGr);
+
+
+                        if(!students.contains(fio) || !groups.contains(gr) && subjects.contains(sj)) // Исправить (см. выше) или исправить StInGr удалив первый и последний символ.
+                            System.out.println("Ошибочка");
+                        else {
+                            marks.add(new Marks(fio, gr, sj, mk));
+                            System.out.println("Вы успешно добавили новую оценку");
+                        }
+                    }
+                    case 15 -> Marks.show(marks);
+
                 }
             }
             System.exit(0);

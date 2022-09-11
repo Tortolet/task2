@@ -80,4 +80,50 @@ public class Search {
         System.out.println(res);
 
     }
+
+    public static String SearchFio(String fio, List<String> StInGr){
+        String find = null;
+        String local;
+
+        int i = 0;
+        for(String str:StInGr){
+            if(str.trim().contains(fio))
+                find = StInGr.get(i);
+            i++;
+        }
+
+        local = find; // Запись нужной фамилии с группой
+
+        String separator =" ";
+        int sepPos = find.indexOf(separator);
+        if (sepPos == -1) {
+            System.out.println("");
+        }
+        String test = local.substring(sepPos + separator.length());
+        StringBuffer stringBuffer = new StringBuffer(test);
+        stringBuffer.deleteCharAt(stringBuffer.length()-1);
+        return stringBuffer.toString();
+    }
+
+    public static String SearchGroup(String group, List<String> StInGr) throws Exception {
+        String find = null;
+        String local;
+
+        int i = 0;
+        for(String str:StInGr){
+            if(str.trim().contains(group))
+                find = StInGr.get(i);
+            i++;
+        }
+
+        local = find; // Запись нужной фамилии с группой
+
+        String res = null;
+        if(local!=null)
+            res = local.substring(1,local.indexOf(" "));
+        if(res==null)
+            throw new Exception();
+
+        return res;
+    }
 }
