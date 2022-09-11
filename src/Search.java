@@ -61,12 +61,22 @@ public class Search {
         }
 
         local = find; // Запись нужной фамилии с группой
+
+        String separator =" ";
+        int sepPos = find.indexOf(separator);
+        if (sepPos == -1) {
+            System.out.println("");
+        }
+
         String res = null;
         if(local!=null)
             res = local.substring(1,local.indexOf(" "));
         if(res==null)
             throw new Exception();
-        System.out.println("\nСтудент\n" + fio + "\n\nГруппа:");
+        String test = local.substring(sepPos + separator.length());
+        StringBuffer stringBuffer = new StringBuffer(test);
+        stringBuffer.deleteCharAt(stringBuffer.length()-1);
+        System.out.println("\nСтудент:\n" + stringBuffer + "\n\nГруппа:");
         System.out.println(res);
 
     }

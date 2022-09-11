@@ -125,7 +125,7 @@ public class Main {
             System.out.println("Введите ФИО студента:");
             String fio = scanner.nextLine();
 
-            if (!groups.contains(gr) && !students.contains(fio)) {
+            if (!groups.contains(gr) || !students.contains(fio)) {
                 System.out.println("Такой группы или студента не существует");
                 return null;
             }
@@ -149,7 +149,7 @@ public class Main {
             System.out.println("Введите предмет:");
             String sub = scanner.nextLine();
 
-            if (!groups.contains(gr) && !subjects.contains(sub)) {
+            if (!groups.contains(gr) || !subjects.contains(sub)) {
                 System.out.println("Такой группы или предмета не существует");
                 return null;
             }
