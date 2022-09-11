@@ -114,28 +114,7 @@ public class Main {
                         for (String ost : GrInSub)
                             System.out.println(ost);
                     }
-                    case 14 -> {
-                        Scanner scanner = new Scanner(System.in);
-                        System.out.println("Введите ФИО");
-                        String fio = scanner.nextLine();
-                        System.out.println("Введите группу");
-                        String gr = scanner.nextLine();
-                        System.out.println("Введите предмет");
-                        String sj = scanner.nextLine();
-                        System.out.println("Введите оценку");
-                        int mk = scanner.nextInt();
-
-//                        String localFio = Search.SearchFio(fio,StInGr);
-//                        String localGr = Search.SearchGroup(gr,StInGr);
-
-
-                        if(!students.contains(fio) || !groups.contains(gr) && subjects.contains(sj)) // Исправить (см. выше) или исправить StInGr удалив первый и последний символ.
-                            System.out.println("Ошибочка");
-                        else {
-                            marks.add(new Marks(fio, gr, sj, mk));
-                            System.out.println("Вы успешно добавили новую оценку");
-                        }
-                    }
+                    case 14 -> Marks.save(students, groups, subjects, marks);
                     case 15 -> Marks.show(marks);
 
                 }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Marks {
     private String nameSt;
@@ -47,11 +48,31 @@ public class Marks {
         this.markSt = markSt;
     }
 
-    public void save(){
+    public static void save(List<String> students, List<String> groups, List<String> subjects, List<Marks> marks){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите ФИО");
+        String fio = scanner.nextLine();
+        System.out.println("Введите группу");
+        String gr = scanner.nextLine();
+        System.out.println("Введите предмет");
+        String sj = scanner.nextLine();
+        System.out.println("Введите оценку");
+        int mk = scanner.nextInt();
 
+//                        String localFio = Search.SearchFio(fio,StInGr);
+//                        String localGr = Search.SearchGroup(gr,StInGr);
+
+
+        if(!students.contains(fio) || !groups.contains(gr) && subjects.contains(sj)) // Исправить (см. выше) или исправить StInGr удалив первый и последний символ.
+            System.out.println("Ошибочка");
+        else {
+            marks.add(new Marks(fio, gr, sj, mk));
+            System.out.println("Вы успешно добавили новую оценку");
+        }
     }
 
     public static void show(List<Marks> marks){
+        System.out.println("\n");
         for (Marks mark : marks) {
             System.out.println("ФИО: " + mark.getNameSt());
             System.out.println("Группа: " + mark.getGroupSt());
