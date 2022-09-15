@@ -114,7 +114,7 @@ public class Main {
                         for (String ost : GrInSub)
                             System.out.println(ost);
                     }
-                    case 14 -> Marks.save(students, groups, subjects, marks);
+                    case 14 -> Marks.save(students, groups, subjects, marks, StInGr);
                     case 15 -> Marks.show(marks);
 
                 }

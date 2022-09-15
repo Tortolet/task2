@@ -48,7 +48,7 @@ public class Marks {
         this.markSt = markSt;
     }
 
-    public static void save(List<String> students, List<String> groups, List<String> subjects, List<Marks> marks){
+    public static void save(List<String> students, List<String> groups, List<String> subjects, List<Marks> marks, List<String> StInGr) throws Exception {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите ФИО");
         String fio = scanner.nextLine();
@@ -59,11 +59,11 @@ public class Marks {
         System.out.println("Введите оценку");
         int mk = scanner.nextInt();
 
-//                        String localFio = Search.SearchFio(fio,StInGr);
-//                        String localGr = Search.SearchGroup(gr,StInGr);
+        String localFio = Search.SearchFio(fio,StInGr);
+        String localGr = Search.SearchGroup(gr,StInGr);
 
 
-        if(!students.contains(fio) || !groups.contains(gr) && subjects.contains(sj)) // Исправить (см. выше) или исправить StInGr удалив первый и последний символ.
+        if(!localFio.equals(fio) || !localGr.equals(gr) && subjects.contains(sj)) // Исправить (см. выше) или исправить StInGr удалив первый и последний символ.
             System.out.println("Ошибочка");
         else {
             marks.add(new Marks(fio, gr, sj, mk));
